@@ -5,17 +5,52 @@ async function getFeed() {
         "https://v2.api.noroff.dev/blog/posts/ChrisErBest"
     );
     const blogPost = await response.json();
-    console.log(blogPost);
+    displayPosts(blogPost.data);
 }
 
 getFeed();
 
-function displayPosts() {
-    main.innerHTML += `
-    <a href="${}" class="posts">
-    </img src="${}" alt="A blog image">
-    <h3>${}</h3>
-    <p>${}</p>
-    </a>
-    `;
+function displayPosts(data) {
+    data.forEach((blogItem) => {
+        const id = blogItem.id;
+        const title = blogItem.title;
+        const author = blogItem.author.name;
+        const body = blogItem.body;
+        const tags = blogItem.tags;
+        const media = blogItem.media;
+        let mediaUrl = "";
+        let mediaAlt = "";
+        if (media) {
+            mediaUrl = media.url;
+            mediaAlt = media.alt;
+        }
+        const created = new Date(blogItem.created).toLocaleString("NO", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+        });
+        const updated = new Date(blogItem.updated).toLocaleString("NO", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+        });
+
+        main.innerHTML += `
+        <a href="${id}" class="posts">
+        </img src="${mediaUrl}" alt="${mediaAlt}">
+        <h2>${title}</h2>
+        <p>${body}</p>
+        <p>${tags}</p>
+        <p>${author}</p>
+        <p>${created}</p>
+        <p>${updated}</p>
+        </a>
+        `;
+    });
 }

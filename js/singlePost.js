@@ -1,15 +1,26 @@
 const main = document.getElementById("mainContainer");
-const currentPostId = sessionStorage.getItem("postId");
 
-async function getFeed() {
-    const response = await fetch(
-        `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${currentPostId}`
-    );
-    const blogPost = await response.json();
-    displayPost(blogPost.data);
+async function displayPostFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get("id");
+
+    if (!postId) {
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${postId}`
+        );
+        const blogPost = await response.json();
+
+        displayPost(blogPost.data);
+    } catch (error) {
+        console.error("Error fetching post:", error);
+    }
 }
 
-getFeed();
+displayPostFromUrl();
 
 function displayPost(blogItem) {
     const id = blogItem.id;
@@ -42,14 +53,14 @@ function displayPost(blogItem) {
     });
 
     main.innerHTML = `
-    <div class="postContainer">    
-    <img src="${mediaUrl}" alt="${mediaAlt}">
-        <h2>${title}</h2>
-        <p>${body}</p>
-        <p>Tags: ${tags}</p>
-        <p>Author: ${author}</p>
-        <p>Created: ${created}</p>
-        <p>Updated: ${updated}</p>
+        <div class="postContainer">
+            <img src="${mediaUrl}" alt="${mediaAlt}">
+            <h2>${title}</h2>
+            <p>${body}</p>
+            <p>Tags: ${tags}</p>
+            <p>Author: ${author}</p>
+            <p>Created: ${created}</p>
+            <p>Updated: ${updated}</p>
         </div>
     `;
 }

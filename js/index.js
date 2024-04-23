@@ -41,16 +41,23 @@ function displayPosts(data) {
             second: "numeric",
         });
 
-        main.innerHTML += `
-        <a href="${id}" class="posts">
-        <img src="${mediaUrl}" alt="${mediaAlt}">
-        <h2>${title}</h2>
-        <p>${body}</p>
-        <p>${tags}</p>
-        <p>${author}</p>
-        <p>Created: ${created}</p>
-        <p>Updated: ${updated}</p>
-        </a>
+        const postLink = document.createElement("a");
+        postLink.href = `singlePost.html?id=${id}`;
+        postLink.className = "posts";
+        postLink.addEventListener("click", function (event) {
+            sessionStorage.setItem("postId", id);
+        });
+
+        postLink.innerHTML = `
+            <img src="${mediaUrl}" alt="${mediaAlt}">
+            <h2>${title}</h2>
+            <p>${body}</p>
+            <p>${tags}</p>
+            <p>${author}</p>
+            <p>Created: ${created}</p>
+            <p>Updated: ${updated}</p>
         `;
+
+        main.appendChild(postLink);
     });
 }

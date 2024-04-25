@@ -28,7 +28,7 @@ signInBTN.addEventListener("click", async () => {
             } else if (response.status === 401) {
                 alert("Incorrect email or password. Please try again.");
             } else {
-                throw new Error("Failed to login"); // Handle other error responses
+                throw new Error("Failed to login");
             }
         }
         const data = await response.json();
@@ -37,7 +37,6 @@ signInBTN.addEventListener("click", async () => {
             window.location.href = "/post/index.html";
         }
     } catch (error) {
-        // Handle errors
         console.error("Login error:", error);
     }
 });

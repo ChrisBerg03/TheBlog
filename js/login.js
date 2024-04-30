@@ -33,8 +33,9 @@ signInBTN.addEventListener("click", async () => {
         }
         const data = await response.json();
         if (response.status === 200) {
+            localStorage.setItem("Token", data.data.accessToken);
             console.log("Login successful", data);
-            window.location.href = "/post/index.html";
+            window.location.href = "/account/adminFeed.html";
         }
     } catch (error) {
         console.error("Login error:", error);

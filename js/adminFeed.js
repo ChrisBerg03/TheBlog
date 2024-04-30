@@ -1,4 +1,9 @@
 const main = document.getElementById("mainContainer");
+const createPost = document.getElementById("newPost");
+
+createPost.addEventListener("click", function () {
+    window.location.href = "/post/make.html";
+});
 
 async function getFeed() {
     const response = await fetch(

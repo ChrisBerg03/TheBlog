@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registration form</title>
+        <script src="/js/register.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <header></header>
+            <main id="mainContainer">
+                <input
+                    id="userName"
+                    placeholder="Name (required)"
+                    type="name"
+                    name="name"
+                />
+                <input
+                    id="email"
+                    placeholder="Email (required)"
+                    type="email"
+                    name="email"
+                />
+                <input
+                    id="password"
+                    placeholder="password (required)"
+                    type="password"
+                    name="password"
+                />
+                <input
+                    id="bio"
+                    placeholder="bio (optional)"
+                    type="text"
+                    name="bio"
+                />
+                <div class="avatarContainer">
+                    <input
+                        id="avatarUrl"
+                        placeholder="avatar Image (optional)"
+                        type="url"
+                        name="avatarUrl"
+                    />
+                    <input
+                        id="avatarAlt"
+                        placeholder="avatar description (optional)"
+                        type="text"
+                        name="avatarAlt"
+                    />
+                </div>
+                <div class="bannerContainer">
+                    <input
+                        id="bannerUrl"
+                        placeholder="banner Image (optional)"
+                        type="url"
+                        name="bannerUrl"
+                    />
+                    <input
+                        id="bannerAlt"
+                        placeholder="banner description (optional)"
+                        type="text"
+                        name="bannerAlt"
+                    />
+                </div>
+
+                <input id="register" type="submit" value="Register" />
+            </main>
+            <footer></footer>
+        </div>
+    </body>
+</html>

@@ -9,7 +9,7 @@ async function createBlogPost(token) {
     const tags = document
         .getElementById("tags")
         .value.split(",")
-        .map((tag) => tag.trim()); // Split tags by comma and trim whitespace
+        .map((tag) => tag.trim());
     const mediaUrl = document.getElementById("mediaUrl").value;
     const mediaAlt = document.getElementById("mediaAlt").value;
 
@@ -41,31 +41,25 @@ async function createBlogPost(token) {
         return responseData;
     } catch (error) {
         console.error("Error creating blog post:", error.message);
-        // You can handle the error here, such as displaying a message to the user
-    }
-}
-
-// Example usage with bearer token:
-const authToken = localStorage.getItem("token");
-
-// Call createBlogPost function when submitting a form or performing an action
-// For example, when submitting a form:
-function checkUserValidity() {
-    const bearerToken = localStorage.getItem("token");
-
-    if (!bearerToken) {
-        alert("You are not logged in. Please log in to create a blog post.");
+        alert("There has occurred an error, please try again");
         return false;
     }
-
-    return true;
 }
 
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        document.getElementById("postBTN").click();
+    }
+});
+
 document.getElementById("postBTN").addEventListener("click", async () => {
-    if (checkUserValidity() && title.value !== "") {
-        const responseData = await createBlogPost(authToken);
-        console.log("Blog post created successfully:", responseData);
+    if (!bearerToken) {
+        alert("You are not logged in. Please log in to create a blog post.");
+        window.location.href = "/account/login.html";
     } else {
-        console.log("Please enter something");
+        const responseData = await createBlogPost(bearerToken);
+        if (responseData !== false) {
+            console.log("Blog post created successfully:", responseData);
+        }
     }
 });

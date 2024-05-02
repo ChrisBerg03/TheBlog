@@ -70,6 +70,7 @@ function displayPosts(data) {
         });
 
         main.innerHTML += `
+        <div class="postContainer">
             <a href="/post/index.html?id=${id}" class="posts">
             <img src="${mediaUrl}" alt="${mediaAlt}">
             <h2>${title}</h2>
@@ -80,8 +81,16 @@ function displayPosts(data) {
             <p>Created: ${created}</p>
             <p>Updated: ${updated}</p>
             </a>
-            <button id="postEdit">Edit</button>
-            <button id="postDelete">Delete</button>
+            <button class="postEdit" data-id="${id}">Edit</button>
+            </div>
         `;
+    });
+
+    const editBTN = document.querySelectorAll(".postEdit");
+    editBTN.forEach((button) => {
+        button.addEventListener("click", function () {
+            const postId = this.getAttribute("data-id");
+            window.location.href = `/post/edit.html?id=${postId}`;
+        });
     });
 }

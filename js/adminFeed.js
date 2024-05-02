@@ -49,7 +49,7 @@ function displayPosts(data) {
         });
 
         main.innerHTML += `
-            <a href="singlePost.html?id=${id}" class="posts">
+            <a href="/post/index.html?id=${id}" class="posts">
             <img src="${mediaUrl}" alt="${mediaAlt}">
             <h2>${title}</h2>
             <p>${id}</p>

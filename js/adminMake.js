@@ -1,53 +1,56 @@
 const main = document.getElementById("mainContainer");
-const postBTN = document.getElementById("postBTN");
 const bearerToken = localStorage.getItem("Token");
 
-postBTN.addEventListener("click", async () => {
+async function createBlogPost(token) {
+    const url = "https://v2.api.noroff.dev/blog/posts/ChrisErBest";
+
     const title = document.getElementById("title").value;
     const body = document.getElementById("body").value;
-    const tags = document.getElementById("tags").value;
+    const tags = document
+        .getElementById("tags")
+        .value.split(",")
+        .map((tag) => tag.trim()); // Split tags by comma and trim whitespace
     const mediaUrl = document.getElementById("mediaUrl").value;
     const mediaAlt = document.getElementById("mediaAlt").value;
 
-    const PostData = {
+    const postData = {
         title: title,
         body: body,
         tags: tags,
-    };
-
-    PostData.media = {
-        url: mediaUrl,
-        alt: mediaAlt,
-    };
-
-    const requestOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: bearerToken,
+        media: {
+            url: mediaUrl,
+            alt: mediaAlt,
         },
-        body: JSON.stringify(PostData),
     };
 
     try {
-        const response = await fetch(
-            "https://v2.api.noroff.dev/blog/posts/ChrisErBest",
-            requestOptions
-        );
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(postData),
+        });
 
         if (!response.ok) {
-            if (response.status === 400) {
-                alert("An error has occurred. Please try again");
-            } else {
-                throw new Error("Error occurred");
-            }
+            throw new Error("Failed to create blog post");
         }
-        const data = await response.json();
-        if (response.status === 201) {
-            console.log("post successful", data);
-            window.location.href = "/account/adminFeed.html";
-        }
+
+        const responseData = await response.json();
+        return responseData;
     } catch (error) {
-        console.error("Login error:", error);
+        console.error("Error creating blog post:", error.message);
+        // You can handle the error here, such as displaying a message to the user
     }
+}
+
+// Example usage with bearer token:
+const authToken = localStorage.getItem("Token");
+
+// Call createBlogPost function when submitting a form or performing an action
+// For example, when submitting a form:
+document.getElementById("postBTN").addEventListener("click", async () => {
+    const responseData = await createBlogPost(authToken);
+    console.log("Blog post created successfully:", responseData);
 });

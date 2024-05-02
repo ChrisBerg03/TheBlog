@@ -1,6 +1,12 @@
 const main = document.getElementById("mainContainer");
 const signInBTN = document.getElementById("signIn");
 
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        document.getElementById("signIn").click();
+    }
+});
+
 signInBTN.addEventListener("click", async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;

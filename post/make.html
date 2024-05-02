@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Create a post</title>
+        <script src="/js/adminMake.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <header></header>
+            <main id="mainContainer">
+                <input
+                    id="title"
+                    placeholder="Title"
+                    type="text"
+                    name="title"
+                />
+                <input
+                    id="body"
+                    placeholder="Write your story here"
+                    type="text"
+                    name="body"
+                />
+                <input id="tags" placeholder="Tags" type="text" name="tags" />
+                <div class="mediaContainer">
+                    <input
+                        id="mediaUrl"
+                        placeholder="Media Url"
+                        type="url"
+                        name="mediaUrl"
+                    />
+                    <input
+                        id="mediaAlt"
+                        placeholder="Image description"
+                        type="text"
+                        name="meidaAlt"
+                    />
+                </div>
+                <button id="postBTN" type="submit">Post</button>
+            </main>
+            <footer></footer>
+        </div>
+    </body>
+</html>

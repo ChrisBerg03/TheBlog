@@ -6,19 +6,40 @@ createPost.addEventListener("click", function () {
 });
 
 async function getFeed() {
-    const response = await fetch(
-        "https://v2.api.noroff.dev/blog/posts/ChrisErBest"
-    );
-    const blogPost = await response.json();
-    displayPosts(blogPost.data);
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("User not authenticated.");
+        window.location.href = "/account/login.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "https://v2.api.noroff.dev/blog/posts/ChrisErBest",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch data");
+        }
+
+        const blogPosts = await response.json();
+        displayPosts(blogPosts.data);
+    } catch (error) {
+        console.error("Error fetching data:", error.message);
+        // Handle error, such as displaying a message to the user
+    }
 }
 
 getFeed();
 
 function displayPosts(data) {
     data.forEach((blogItem) => {
-        const deleteBTN = document.getElementById("postDelete");
-        const editBTN = document.getElementById("postEdit");
         const id = blogItem.id;
         const title = blogItem.title;
         const author = blogItem.author.name;

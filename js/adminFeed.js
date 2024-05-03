@@ -32,7 +32,7 @@ async function getFeed() {
         displayPosts(blogPosts.data);
     } catch (error) {
         console.error("Error fetching data:", error.message);
-        // Handle error, such as displaying a message to the user
+        alert("Error getting data, please try again");
     }
 }
 

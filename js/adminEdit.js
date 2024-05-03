@@ -1,19 +1,18 @@
 const main = document.getElementById("mainContainer");
+const bearerToken = localStorage.getItem("token");
+const urlParams = new URLSearchParams(window.location.search);
 let postId;
+postId = urlParams.get("id");
+const url = `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${postId}`;
 
 async function displayPostFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    postId = urlParams.get("id"); // Assign value to postId
-
     if (!postId) {
         alert("Post could not be found");
         return;
     }
 
     try {
-        const response = await fetch(
-            `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${postId}`
-        );
+        const response = await fetch(url);
         const blogPost = await response.json();
 
         displayPost(blogPost.data);
@@ -57,8 +56,8 @@ function displayPost(blogItem) {
         <div class="postContainer">
             <div id="imageDiv">
             <img src="${mediaUrl}" alt="${mediaAlt}">
-            <input id="imgUrl" value="${mediaUrl}"/>
-            <input id="imgAlt" value="${mediaAlt}"/>
+            <input id="mediaUrl" value="${mediaUrl}"/>
+            <input id="mediaAlt" value="${mediaAlt}"/>
             </div>
             <input id="title" value="${title}"/>
             <input id="body" value="${body}"/>
@@ -67,8 +66,10 @@ function displayPost(blogItem) {
             <p>Created: ${created}</p>
             <p>Updated: ${updated}</p>
             <button id="deletePost">Delete post</button>
+            <button id="confirmEdit">Confirm changes</button>
         </div>
     `;
+
     const deleteBTN = document.getElementById("deletePost");
     deleteBTN.addEventListener("click", async function () {
         const confirmed = confirm("Are you sure you want to delete this post?");
@@ -76,31 +77,73 @@ function displayPost(blogItem) {
             return;
         }
 
-        const bearerToken = localStorage.getItem("token");
         if (!bearerToken) {
             alert("User not authenticated.");
             return;
         }
 
         try {
-            const response = await fetch(
-                `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${postId}`,
-                {
-                    method: "DELETE",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${bearerToken}`,
-                    },
-                }
-            );
+            const response = await fetch(url, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${bearerToken}`,
+                },
+            });
 
             if (!response.ok) {
                 throw new Error("Failed to delete post");
-            } else {
-                window.location.href = "/account/adminFeed.html";
             }
+            window.location.href = "/account/adminFeed.html";
         } catch (error) {
             console.error("Error deleting post:", error);
         }
     });
+
+    const confirmEdit = document.getElementById("confirmEdit");
+    confirmEdit.addEventListener("click", editBlogPost);
+
+    async function editBlogPost() {
+        const title = document.getElementById("title").value;
+        const body = document.getElementById("body").value;
+        const tags = document
+            .getElementById("tags")
+            .value.split(", ")
+            .map((tag) => tag.trim());
+        const mediaUrl = document.getElementById("mediaUrl").value;
+        const mediaAlt = document.getElementById("mediaAlt").value;
+
+        const postData = {
+            title: title,
+            body: body,
+            tags: tags,
+            media: {
+                url: mediaUrl,
+                alt: mediaAlt,
+            },
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${bearerToken}`,
+                },
+                body: JSON.stringify(postData),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to edit blog post");
+            }
+
+            const responseData = await response.json();
+            window.location.href = "/account/adminFeed.html";
+            return responseData;
+        } catch (error) {
+            console.error("Error editing blog post:", error.message);
+            alert("An error occurred, please try again");
+            return false;
+        }
+    }
 }

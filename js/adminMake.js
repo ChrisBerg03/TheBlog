@@ -8,7 +8,7 @@ async function createBlogPost(token) {
     const body = document.getElementById("body").value;
     const tags = document
         .getElementById("tags")
-        .value.split(",")
+        .value.split(", ")
         .map((tag) => tag.trim());
     const mediaUrl = document.getElementById("mediaUrl").value;
     const mediaAlt = document.getElementById("mediaAlt").value;

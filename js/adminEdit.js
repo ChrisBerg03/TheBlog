@@ -113,15 +113,18 @@ function displayPost(blogItem) {
         const mediaUrl = document.getElementById("mediaUrl").value;
         const mediaAlt = document.getElementById("mediaAlt").value;
 
-        const postData = {
+        let postData = {
             title: title,
             body: body,
             tags: tags,
-            media: {
+        };
+
+        if (mediaUrl !== "") {
+            postData.media = {
                 url: mediaUrl,
                 alt: mediaAlt,
-            },
-        };
+            };
+        }
 
         try {
             const response = await fetch(url, {

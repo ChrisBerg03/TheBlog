@@ -13,15 +13,18 @@ async function createBlogPost(token) {
     const mediaUrl = document.getElementById("mediaUrl").value;
     const mediaAlt = document.getElementById("mediaAlt").value;
 
-    const postData = {
+    let postData = {
         title: title,
         body: body,
         tags: tags,
-        media: {
+    };
+
+    if (mediaUrl !== "") {
+        postData.media = {
             url: mediaUrl,
             alt: mediaAlt,
-        },
-    };
+        };
+    }
 
     try {
         const response = await fetch(url, {
@@ -38,6 +41,7 @@ async function createBlogPost(token) {
         }
 
         const responseData = await response.json();
+        window.location.href = "/account/adminFeed.html";
         return responseData;
     } catch (error) {
         console.error("Error creating blog post:", error.message);

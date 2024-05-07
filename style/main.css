@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1440px;
+}
+
+/* header {
+
+} */
+
+img {
+    object-fit: fill;
+    height: 350px;
+    width: 280px;
+    object-fit: cover;
+}

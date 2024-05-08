@@ -8,9 +8,6 @@ async function displayPosts() {
         );
         const blogPost = await response.json();
 
-        blogPost.data.sort((a, b) => new Date(b.created) - new Date(a.created));
-
-        // Generate HTML for all posts in the main container
         const postsHTML = blogPost.data.map((blogItem) => {
             const id = blogItem.id;
             const title = blogItem.title;
@@ -37,7 +34,7 @@ async function displayPosts() {
                 second: "numeric",
             });
 
-            return `
+            main.innerHTML += `
                 <div id="post-${id}" class="post">
                     <a href="/post/index.html?id=${id}" class="posts">
                         <img src="${mediaUrl}" alt="${mediaAlt}">
@@ -52,10 +49,12 @@ async function displayPosts() {
             `;
         });
 
-        main.innerHTML = postsHTML.join("");
+        blogPost.data.sort((a, b) => new Date(b.created) - new Date(a.created));
 
-        // Generate HTML for the carousel with only one post displayed at a time
-        const carouselPosts = blogPost.data.map((blogItem) => {
+        const newPosts = blogPost.data.slice(0, 3);
+
+        // Generate HTML for the carousel with only new posts
+        const carouselPosts = newPosts.map((blogItem) => {
             const id = blogItem.id;
             const title = blogItem.title;
             const media = blogItem.media;
@@ -81,22 +80,23 @@ async function displayPosts() {
 
         header.innerHTML = `
             <div class="carouselContainer">
-                <button id="prevBtn">Prev</button>
+                <button id="prevBtn">&#8656</button>
                 <div class="carouselSlide">
                     ${carouselPosts.join("")}
                 </div>
-                <button id="nextBtn">Next</button>
+                <button id="nextBtn">&#8658</button>
             </div>
         `;
 
+        // Carousel functionality
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
+        const carouselPostsElements = document.querySelectorAll(".newPosts");
 
         let currentSlide = 0;
 
         const showSlide = () => {
-            const posts = document.querySelectorAll(".newPosts");
-            posts.forEach((post, index) => {
+            carouselPostsElements.forEach((post, index) => {
                 if (index === currentSlide) {
                     post.style.display = "block";
                 } else {
@@ -109,19 +109,21 @@ async function displayPosts() {
             if (currentSlide > 0) {
                 currentSlide -= 1;
             } else {
-                currentSlide = 2;
+                currentSlide = carouselPostsElements.length - 1;
             }
             showSlide();
         });
 
         nextBtn.addEventListener("click", () => {
-            if (currentSlide < carouselPosts.length - 1) {
+            if (currentSlide < carouselPostsElements.length - 1) {
                 currentSlide += 1;
             } else {
                 currentSlide = 0;
             }
             showSlide();
         });
+
+        // Show the initial slide
         showSlide();
     } catch (error) {
         console.error("Error fetching and displaying posts:", error);

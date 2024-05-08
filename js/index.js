@@ -80,11 +80,11 @@ async function displayPosts() {
 
         header.innerHTML = `
             <div class="carouselContainer">
-                <button id="prevBtn">Prev</button>
+                <button id="prevBtn">&#8656</button>
                 <div class="carouselSlide">
                     ${carouselPosts.join("")}
                 </div>
-                <button id="nextBtn">Next</button>
+                <button id="nextBtn">&#8658</button>
             </div>
         `;
 

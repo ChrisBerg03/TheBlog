@@ -35,17 +35,17 @@ async function displayPosts() {
             });
 
             main.innerHTML += `
-                <div id="post-${id}" class="post">
-                    <a href="/post/index.html?id=${id}" class="posts">
-                        <img src="${mediaUrl}" alt="${mediaAlt}">
-                        <h2>${title}</h2>
-                        <p>${body}</p>
-                        <p>${tags}</p>
-                        <p>${author}</p>
-                        <p>Created: ${created}</p>
-                        <p>Updated: ${updated}</p>
-                    </a>
-                </div>
+            <div id="post-${id}" class="post">
+            <a href="/post/index.html?id=${id}" class="posts">
+            <img src="${mediaUrl}" alt="${mediaAlt}">
+            <h2>${title}</h2>
+            <p>${body}</p>
+            <p>${tags}</p>
+            <p>${author}</p>
+            <p>Created: ${created}</p>
+            <p>Updated: ${updated}</p>
+            </a>
+            </div>
             `;
         });
 

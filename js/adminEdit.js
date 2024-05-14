@@ -8,6 +8,7 @@ const url = `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${postId}`;
 async function displayPostFromUrl() {
     if (!postId) {
         alert("Post could not be found");
+        window.location.href = "/index.html";
         return;
     }
 
@@ -54,19 +55,24 @@ function displayPost(blogItem) {
 
     main.innerHTML = `
         <div class="postContainer">
-            <div id="imageDiv">
             <img src="${mediaUrl}" alt="${mediaAlt}">
-            <input id="mediaUrl" value="${mediaUrl}"/>
-            <input id="mediaAlt" value="${mediaAlt}"/>
-            </div>
+            <label for="title">Title</label>
             <input id="title" value="${title}"/>
+            <label for="body">Story</label>
             <input id="body" value="${body}"/>
+            <label for="tags">#Tags</label>
             <input id="tags" value="${tags}"/>
+            <label for="mediaUrl">Media Url</label>
+            <input id="mediaUrl" value="${mediaUrl}"/>
+            <label for="mediaAlt">Media Alt</label>
+            <input id="mediaAlt" value="${mediaAlt}"/>
             <p>Author: ${author}</p>
             <p>Created: ${created}</p>
             <p>Updated: ${updated}</p>
+            <div id="buttonContainer">
             <button id="deletePost">Delete post</button>
             <button id="confirmEdit">Confirm changes</button>
+            </div>
         </div>
     `;
 

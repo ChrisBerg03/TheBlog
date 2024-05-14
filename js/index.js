@@ -8,9 +8,6 @@ async function displayPosts() {
         );
         const blogPost = await response.json();
 
-        blogPost.data.sort((a, b) => new Date(b.created) - new Date(a.created));
-        const pagination = blogPost.data.slince(0, 12);
-
         const postsHTML = blogPost.data.map((blogItem) => {
             const id = blogItem.id;
             const title = blogItem.title;
@@ -38,19 +35,21 @@ async function displayPosts() {
             });
 
             main.innerHTML += `
-                <div id="post-${id}" class="post">
-                    <a href="/post/index.html?id=${id}" class="posts">
-                        <img src="${mediaUrl}" alt="${mediaAlt}">
-                        <h2>${title}</h2>
-                        <p>${body}</p>
-                        <p>${tags}</p>
-                        <p>${author}</p>
-                        <p>Created: ${created}</p>
-                        <p>Updated: ${updated}</p>
-                    </a>
-                </div>
+            <div id="post-${id}" class="post">
+            <a href="/post/index.html?id=${id}" class="posts">
+            <img src="${mediaUrl}" alt="${mediaAlt}">
+            <h2>${title}</h2>
+            <p>${body}</p>
+            <p>${tags}</p>
+            <p>${author}</p>
+            <p>Created: ${created}</p>
+            <p>Updated: ${updated}</p>
+            </a>
+            </div>
             `;
         });
+
+        blogPost.data.sort((a, b) => new Date(b.created) - new Date(a.created));
 
         const newPosts = blogPost.data.slice(0, 3);
 

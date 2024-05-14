@@ -28,10 +28,8 @@ main {
 
 header {
     width: 100dvw;
-    height: 72px;
     margin: 24px 0 0 0;
     position: relative;
-    max-width: 930px;
 }
 
 img {

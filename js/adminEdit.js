@@ -8,6 +8,7 @@ const url = `https://v2.api.noroff.dev/blog/posts/ChrisErBest/${postId}`;
 async function displayPostFromUrl() {
     if (!postId) {
         alert("Post could not be found");
+        window.location.href = "/index.html";
         return;
     }
 

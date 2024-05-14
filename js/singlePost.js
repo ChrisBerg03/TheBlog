@@ -55,8 +55,8 @@ function displayPost(blogItem) {
     main.innerHTML = `
         <div class="postContainer">
             <img src="${mediaUrl}" alt="${mediaAlt}">
-            <h2>${title}</h2>
-            <p>${body}</p>
+            <h2>Title: ${title}</h2>
+            <p>Story: ${body}</p>
             <p>Tags: ${tags}</p>
             <p>Author: ${author}</p>
             <p>Created: ${created}</p>

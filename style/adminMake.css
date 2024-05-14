@@ -1,0 +1,26 @@
+main {
+    flex-direction: column;
+    align-items: center;
+}
+
+#postBTN {
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #b5b5b5;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+#postBTN:hover {
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+#mainContainer input {
+    width: 310px;
+    height: 40px;
+    font-size: 16px;
+}

@@ -57,6 +57,17 @@ document.addEventListener("keydown", function (event) {
 });
 
 document.getElementById("postBTN").addEventListener("click", async () => {
+    const title = document.getElementById("title").value;
+    const body = document.getElementById("body").value;
+
+    if (title === "" || body === "") {
+        alert("Please enter at least a title and a story");
+        return;
+    }
+    const confirmed = confirm("Are you sure you want to Post?");
+    if (!confirmed) {
+        return;
+    }
     if (!bearerToken) {
         alert("You are not logged in. Please log in to create a blog post.");
         window.location.href = "/account/login.html";

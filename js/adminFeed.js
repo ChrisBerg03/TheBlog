@@ -1,5 +1,10 @@
 const main = document.getElementById("mainContainer");
-const createPost = document.getElementById("newPost");
+const createPost = document.getElementById("newPostBTN");
+const publicPage = document.getElementById("publicPageBTN");
+
+publicPage.addEventListener("click", function () {
+    window.location.href = "/index.html";
+});
 
 createPost.addEventListener("click", function () {
     window.location.href = "/post/make.html";

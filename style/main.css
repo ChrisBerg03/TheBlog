@@ -55,7 +55,18 @@ a:hover {
     align-items: center;
 }
 
-#newPost {
+.postContainer img {
+    width: 400px;
+    height: auto;
+}
+
+.postContainer h2,
+.postContainer p {
+    width: 400px;
+    line-height: 25px;
+}
+
+#newPostBTN {
     width: 150px;
     height: 40px;
     border-radius: 20px;
@@ -86,4 +97,27 @@ a:hover {
     cursor: pointer;
     letter-spacing: 1px;
     transition: 0.5s;
+}
+
+.newPosts h2,
+.newPosts p,
+.post h2,
+.post p {
+    width: 264px;
+    padding-left: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#publicPageBTN {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #b5b5b5;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    position: absolute;
+    left: 20px;
+    text-align: center;
 }

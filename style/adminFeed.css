@@ -2,3 +2,22 @@ header {
     height: 72px;
     max-width: 930px;
 }
+
+#publicPageBTN:hover,
+#newPostBTN:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 430px) {
+    .posts,
+    .posts h2,
+    .posts p,
+    .posts img {
+        width: 90dvw;
+    }
+    #publicPageBTN,
+    #newPostBTN {
+        width: 40dvw;
+        overflow: hidden;
+    }
+}

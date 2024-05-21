@@ -17,7 +17,6 @@ registerBTN.addEventListener("click", async () => {
     const avatarAlt = document.getElementById("avatarAlt").value;
     const bannerUrl = document.getElementById("bannerUrl").value;
     const bannerAlt = document.getElementById("bannerAlt").value;
-    console.log(name, bio, avatarUrl, avatarAlt, bannerUrl, bannerAlt);
 
     const requestBody = {
         name: name,
@@ -25,7 +24,10 @@ registerBTN.addEventListener("click", async () => {
         password: password,
         bio: bio,
     };
-
+    const confirmed = confirm("Is the given information correct?");
+    if (!confirmed) {
+        return;
+    }
     if (validateImageFields(avatarUrl, avatarAlt, bannerUrl, bannerAlt)) {
         if (avatarUrl && avatarAlt) {
             requestBody.avatar = {

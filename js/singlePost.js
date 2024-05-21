@@ -5,6 +5,8 @@ async function displayPostFromUrl() {
     const postId = urlParams.get("id");
 
     if (!postId) {
+        alert("No post found");
+        window.location.href = "/index.html";
         return;
     }
 
@@ -23,7 +25,6 @@ async function displayPostFromUrl() {
 displayPostFromUrl();
 
 function displayPost(blogItem) {
-    const id = blogItem.id;
     const title = blogItem.title;
     const author = blogItem.author.name;
     const body = blogItem.body;

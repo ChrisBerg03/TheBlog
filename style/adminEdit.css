@@ -1,9 +1,3 @@
-#imageDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .postContainer input {
     width: 310px;
     height: 40px;
@@ -16,8 +10,17 @@
     letter-spacing: 2px;
     padding-top: 16px;
 }
+.postContainer img {
+    width: 100%;
+}
+
+.postContainer p {
+    text-align: center;
+}
 
 .postContainer {
+    width: 80dvw;
+    max-width: 400px;
     padding-bottom: 40px;
 }
 
@@ -39,6 +42,19 @@
     transition: 0.5s;
 }
 
+#buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
 #mainContainer {
     margin: 0;
+}
+
+header {
+    max-width: 400px;
+    width: 80dvw;
+    padding-bottom: 16px;
 }

@@ -1,9 +1,30 @@
-main {
+#mainContainer {
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#postBTN {
+#mainContainer h2 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+#email,
+#password,
+#userName,
+#bio,
+#avatarUrl,
+#avatarAlt,
+#bannerUrl,
+#bannerAlt {
+    width: 310px;
+    height: 40px;
+    font-size: 16px;
+}
+
+#signIn,
+#register {
     width: 150px;
     height: 40px;
     border-radius: 20px;
@@ -14,24 +35,15 @@ main {
     text-align: center;
 }
 
-#postBTN:hover {
+#signIn:hover {
     letter-spacing: 1px;
     transition: 0.5s;
 }
 
-#mainContainer input {
-    width: 310px;
-    height: 40px;
-    font-size: 16px;
-}
-
-.mediaContainer {
+.avatarContainer,
+.bannerContainer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 16px;
-}
-
-header {
-    max-width: 400px;
 }

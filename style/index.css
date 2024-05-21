@@ -2,7 +2,6 @@
 .post {
     height: auto;
     max-height: 580px;
-    width: 280px;
     border: 1px solid #000;
 }
 
@@ -13,6 +12,21 @@
     justify-content: center;
     gap: 8px;
     width: 100dvw;
+}
+
+.carouselSlide {
+    width: 70%;
+    max-width: 600px;
+}
+
+.newPosts img {
+    width: 100%;
+}
+
+.newPosts h2,
+.newPosts p {
+    width: 100%;
+    text-align: center;
 }
 
 #prevBtn,

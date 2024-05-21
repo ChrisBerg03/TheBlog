@@ -1,3 +1,8 @@
+html {
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    background-repeat: repeat-y;
+}
+
 body {
     overflow-x: hidden;
     width: 100dvw;
@@ -119,5 +124,16 @@ a:hover {
     letter-spacing: 0.5px;
     position: absolute;
     left: 20px;
+    text-align: center;
+}
+
+#goBack {
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #b5b5b5;
+    font-size: 16px;
+    letter-spacing: 0.5px;
     text-align: center;
 }

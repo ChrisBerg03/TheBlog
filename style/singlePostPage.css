@@ -22,9 +22,7 @@ header #goBack {
     .postContainer,
     .postContainer h2,
     .postContainer p,
-    .postContainer img {
-        width: 90dvw;
-    }
+    .postContainer img,
     header {
         width: 90dvw;
     }

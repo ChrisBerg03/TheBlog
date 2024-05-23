@@ -5,6 +5,10 @@
     border: 1px solid #000;
 }
 
+.post {
+    max-width: 320px;
+}
+
 .carouselContainer {
     display: flex;
     flex-direction: row;
@@ -15,11 +19,12 @@
 }
 
 .carouselSlide {
-    width: 70%;
+    width: 100%;
     max-width: 600px;
 }
 
-.newPosts img {
+.newPosts img,
+.posts img {
     width: 100%;
 }
 
@@ -39,10 +44,33 @@
     text-align: center;
     background: none;
     color: #fff;
+    position: absolute;
+}
+
+#prevBtn {
+    left: 0;
+    top: 35%;
+}
+
+#nextBtn {
+    right: 0;
+    top: 35%;
 }
 
 #prevBtn:hover,
 #nextBtn:hover {
     background: #fff;
     color: #000;
+}
+
+.positionContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+@media screen and (max-width: 540px) {
+    .newPosts {
+        width: 80dvw;
+    }
 }

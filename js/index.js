@@ -8,6 +8,8 @@ async function displayPosts() {
         );
         const blogPost = await response.json();
 
+        const paginatedPosts = blogPost.data.slice(0, 12);
+
         const postsHTML = blogPost.data.map((blogItem) => {
             const id = blogItem.id;
             const title = blogItem.title;
@@ -80,11 +82,13 @@ async function displayPosts() {
 
         header.innerHTML = `
             <div class="carouselContainer">
+            <div class="positionContainer">
                 <button id="prevBtn">&#8656</button>
                 <div class="carouselSlide">
                     ${carouselPosts.join("")}
                 </div>
                 <button id="nextBtn">&#8658</button>
+                </div>
             </div>
         `;
 

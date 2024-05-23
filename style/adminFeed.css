@@ -1,23 +1,119 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styles */
 header {
-    height: 72px;
-    max-width: 930px;
+    width: 100%;
+    background-color: #333;
 }
 
-#publicPageBTN:hover,
-#newPostBTN:hover {
+.BTNContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+header button {
+    background: #555;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 5px;
 }
 
-@media screen and (max-width: 430px) {
-    .posts,
-    .posts h2,
-    .posts p,
-    .posts img {
-        width: 90dvw;
+header button:hover {
+    background: #777;
+}
+
+#mainContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    gap: 20px;
+}
+
+.postContainer {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(33.333% - 20px);
+    flex: 1 0 calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.postContainer img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.postContainer h2 {
+    font-size: 1.2rem;
+    margin: 15px 10px;
+    color: #333;
+}
+
+.postContainer p {
+    margin: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.postContainer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.postContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Edit button styles */
+.postEdit {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.postEdit:hover {
+    background: #555;
+}
+
+@media (max-width: 768px) {
+    .postContainer {
+        width: calc(50% - 20px);
+        flex: 1 0 calc(50% - 20px);
     }
-    #publicPageBTN,
-    #newPostBTN {
-        width: 40dvw;
-        overflow: hidden;
+}
+
+@media (max-width: 480px) {
+    .postContainer {
+        width: calc(100% - 20px);
+        flex: 1 0 calc(100% - 20px);
     }
 }

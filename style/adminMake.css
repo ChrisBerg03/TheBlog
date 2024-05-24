@@ -18,25 +18,30 @@ body {
 }
 
 header {
-    background: #35424a;
-    color: #ffffff;
+    width: 100%;
+    background-color: #35424a;
+}
+
+.BTNContainer {
+    max-width: 440px;
+    margin: 0 auto;
+    display: flex;
     padding: 10px 20px;
 }
 
 header button {
     background: #e8491d;
-    border: none;
     color: white;
+    border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease;
+    transition: background 0.2s;
+    border-radius: 5px;
 }
 
 header button:hover {
     background: #333;
 }
-
 main input[type="text"],
 main input[type="url"] {
     width: calc(100% - 22px);

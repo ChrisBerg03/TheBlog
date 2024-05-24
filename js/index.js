@@ -15,7 +15,6 @@ async function fetchPosts() {
         const blogPost = await response.json();
         return blogPost.data;
     } catch (error) {
-        console.error("Error fetching posts:", error);
         alert("There was an error fetching posts. Please try again later.");
         return [];
     }

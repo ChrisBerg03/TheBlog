@@ -36,7 +36,6 @@ async function getFeed() {
         const blogPosts = await response.json();
         displayPosts(blogPosts.data);
     } catch (error) {
-        console.error("Error fetching data:", error.message);
         alert("Error getting data, please try again");
     }
 }

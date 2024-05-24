@@ -67,10 +67,7 @@ registerBTN.addEventListener("click", async () => {
         }
         const data = await response.json();
         if (response.status === 201) {
-            console.log("Registration successful", data);
             window.location.href = "/account/login.html";
         }
-    } catch (error) {
-        console.error("Login error:", error);
-    }
+    } catch (error) {}
 });

@@ -44,9 +44,8 @@ async function createBlogPost(token) {
         window.location.href = "/account/adminFeed.html";
         return responseData;
     } catch (error) {
-        console.error("Error creating blog post:", error.message);
         alert("There has occurred an error, please try again");
-        return false;
+        window.location.href = "/account/adminFeed.html";
     }
 }
 
@@ -73,8 +72,5 @@ document.getElementById("postBTN").addEventListener("click", async () => {
         window.location.href = "/account/login.html";
     } else {
         const responseData = await createBlogPost(bearerToken);
-        if (responseData !== false) {
-            console.log("Blog post created successfully:", responseData);
-        }
     }
 });

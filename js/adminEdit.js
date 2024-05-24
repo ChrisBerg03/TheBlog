@@ -18,7 +18,8 @@ async function displayPostFromUrl() {
 
         displayPost(blogPost.data);
     } catch (error) {
-        console.error("Error fetching post:", error);
+        alert(`there has been an error fetching data. ${error}`);
+        window.location.href = "/account/adminFeed.html";
     }
 }
 
@@ -102,14 +103,17 @@ function displayPost(blogItem) {
             }
             window.location.href = "/account/adminFeed.html";
         } catch (error) {
-            console.error("Error deleting post:", error);
+            alert(`there has been an error Deleting post. ${error}`);
         }
     });
 
     const confirmEdit = document.getElementById("confirmEdit");
-    confirmEdit.addEventListener("click", editBlogPost);
+    confirmEdit.addEventListener("click", async function () {
+        const confirmed = confirm("Are you sure you want to edit this post?");
+        if (!confirmed) {
+            return;
+        }
 
-    async function editBlogPost() {
         const title = document.getElementById("title").value;
         const body = document.getElementById("body").value;
         const tags = document
@@ -150,9 +154,8 @@ function displayPost(blogItem) {
             window.location.href = "/account/adminFeed.html";
             return responseData;
         } catch (error) {
-            console.error("Error editing blog post:", error.message);
             alert("An error occurred, please try again");
             return false;
         }
-    }
+    });
 }

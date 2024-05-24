@@ -18,7 +18,8 @@ async function displayPostFromUrl() {
 
         displayPost(blogPost.data);
     } catch (error) {
-        console.error("Error fetching post:", error);
+        alert(`there has been an error fetching data. ${error}`);
+        window.location.href = "/index.html";
     }
 }
 

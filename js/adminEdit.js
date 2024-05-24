@@ -57,15 +57,15 @@ function displayPost(blogItem) {
         <div class="postContainer">
             <img src="${mediaUrl}" alt="${mediaAlt}">
             <label for="title">Title</label>
-            <input id="title" value="${title}"/>
+            <input id="title" value="${title}" type="text"/>
             <label for="body">Story</label>
-            <input id="body" value="${body}"/>
+            <input id="body" value="${body}" type="text"/>
             <label for="tags">#Tags</label>
-            <input id="tags" value="${tags}"/>
+            <input id="tags" value="${tags}" type="text"/>
             <label for="mediaUrl">Media Url</label>
-            <input id="mediaUrl" value="${mediaUrl}"/>
+            <input id="mediaUrl" value="${mediaUrl}" type="text"/>
             <label for="mediaAlt">Media Alt</label>
-            <input id="mediaAlt" value="${mediaAlt}"/>
+            <input id="mediaAlt" value="${mediaAlt}" type="text"/>
             <p>Author: ${author}</p>
             <p>Created: ${created}</p>
             <p>Updated: ${updated}</p>

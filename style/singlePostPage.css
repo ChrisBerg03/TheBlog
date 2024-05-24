@@ -1,29 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
 header {
-    width: 400px;
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 20px;
 }
 
-header #goBack {
-    width: 120px;
-    height: 40px;
-    border-radius: 20px;
+header .container button {
+    background: #e8491d;
     border: none;
-    background: #b5b5b5;
-    font-size: 16px;
-    font-weight: medium;
-    letter-spacing: 0.5px;
-    text-align: center;
-}
-
-#goBack {
+    color: white;
+    padding: 10px 20px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
 }
 
-@media screen and (max-width: 430px) {
-    .postContainer,
-    .postContainer h2,
-    .postContainer p,
-    .postContainer img,
-    header {
-        width: 90dvw;
-    }
+header button:hover {
+    background: #333;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.postContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.postContainer img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.postContainer h2 {
+    margin-top: 0;
+}
+
+.postContainer p {
+    margin: 10px 0;
+}
+
+.postContainer strong {
+    color: #35424a;
 }

@@ -145,6 +145,11 @@ body {
     right: 5%;
 }
 
+#textHeading {
+    width: 100%;
+    text-align: center;
+}
+
 @media (max-width: 768px) {
     .post {
         width: calc(50% - 20px);

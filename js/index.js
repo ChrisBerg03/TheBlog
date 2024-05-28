@@ -53,12 +53,17 @@ function renderPosts(posts, page) {
             second: "numeric",
         });
 
+        const snippetLength = 100;
+        const bodySnippet =
+            body.length > snippetLength
+                ? body.substring(0, snippetLength) + "..."
+                : body;
         postsHTML += `
         <div id="post-${id}" class="post">
             <a href="/post/index.html?id=${id}" class="posts">
                 <img src="${mediaUrl}" alt="${mediaAlt}">
                 <h2>${title}</h2>
-                <p>${body}</p>
+                <p>${bodySnippet}</p>
                 <p>${tags}</p>
                 <p>${author}</p>
                 <p>Created: ${created}</p>

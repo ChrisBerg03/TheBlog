@@ -1,4 +1,3 @@
-/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,7 +7,6 @@ body {
     color: #333;
 }
 
-/* Container styles */
 #mainContainer {
     display: flex;
     flex-wrap: wrap;
@@ -18,14 +16,11 @@ body {
     gap: 20px;
 }
 
-/* Post styles */
 .post {
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: calc(
-        33.333% - 20px
-    ); /* Adjusting to ensure 3 posts per row with gap */
+    width: calc(33.333% - 20px);
     flex: 1 0 calc(33.333% - 20px);
     display: flex;
     flex-direction: column;
@@ -62,7 +57,6 @@ body {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Pagination Controls */
 .paginationControls {
     display: flex;
     justify-content: center;
@@ -118,7 +112,7 @@ body {
 }
 
 .carouselSlide img {
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
 }
@@ -144,11 +138,11 @@ body {
 }
 
 #prevBtn {
-    left: 10px;
+    left: 5%;
 }
 
 #nextBtn {
-    right: 10px;
+    right: 5%;
 }
 
 @media (max-width: 768px) {

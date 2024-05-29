@@ -2,10 +2,7 @@ const main = document.getElementById("mainContainer");
 const registerBTN = document.getElementById("register");
 
 function validateImageFields(avatarUrl, avatarAlt, bannerUrl, bannerAlt) {
-    if ((!avatarUrl || !avatarAlt) && (!bannerUrl || !bannerAlt)) {
-        return false;
-    }
-    return true;
+    return !((!avatarUrl || !avatarAlt) && (!bannerUrl || !bannerAlt));
 }
 
 registerBTN.addEventListener("click", async () => {
@@ -18,29 +15,32 @@ registerBTN.addEventListener("click", async () => {
     const bannerUrl = document.getElementById("bannerUrl").value;
     const bannerAlt = document.getElementById("bannerAlt").value;
 
+    if (!name || !email || !password) {
+        alert("Name, email, and password are required.");
+        return;
+    }
+
     const requestBody = {
-        name: name,
-        email: email,
-        password: password,
-        bio: bio,
+        name,
+        email,
+        password,
+        bio,
+        avatar: {},
+        banner: {},
     };
+
     const confirmed = confirm("Is the given information correct?");
     if (!confirmed) {
         return;
     }
+
     if (validateImageFields(avatarUrl, avatarAlt, bannerUrl, bannerAlt)) {
         if (avatarUrl && avatarAlt) {
-            requestBody.avatar = {
-                url: avatarUrl,
-                alt: avatarAlt,
-            };
+            requestBody.avatar = { url: avatarUrl, alt: avatarAlt };
         }
 
         if (bannerUrl && bannerAlt) {
-            requestBody.banner = {
-                url: bannerUrl,
-                alt: bannerAlt,
-            };
+            requestBody.banner = { url: bannerUrl, alt: bannerAlt };
         }
     }
 
@@ -65,9 +65,11 @@ registerBTN.addEventListener("click", async () => {
                 throw new Error("Failed to register");
             }
         }
-        const data = await response.json();
+
         if (response.status === 201) {
             window.location.href = "/account/login.html";
         }
-    } catch (error) {}
+    } catch (error) {
+        alert("An error occurred: " + error.message);
+    }
 });

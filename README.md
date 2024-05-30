@@ -28,6 +28,7 @@ The BeerBlog is a web blog designed to give user easy information about various 
 - JavaScript
 - CSS
 - Figma - [Link to design](https://www.figma.com/design/URTjldCng20KdGG64RIs0Q/ExamProject?node-id=1-4&t=E7pJxLVYkRMBqgGu-0)
+- ChatGpt
 
 ## Installation:
 [Link to live demo](https://the-blog-peach.vercel.app/) (Deployed using Vercel)

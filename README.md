@@ -2,7 +2,7 @@
 # The beerBlog
 
 ## Description:
-The BeerBlog is a web blog designed to give user easy information about various beers. Implemented using HTML, Javascript and css. The app allows user to view static data about different beers, while the owner has authority to create, edit and delete posts by logging in. The blog is scalled for mobile, tablet and desktop.
+This is an assignment ment to better my understanding on code and front-end tool as a whole. The BeerBlog is a web blog designed to give user easy information about various beers. Implemented using HTML, Javascript and css. The app allows user to view static data about different beers, while the owner has authority to create, edit and delete posts by logging in. The blog is scalled for mobile, tablet and desktop.
 
 ## Demo or Screenshots:
 (Click image to open in full size)
